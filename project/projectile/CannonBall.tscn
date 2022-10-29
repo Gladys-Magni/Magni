@@ -46,6 +46,7 @@ animations = [ {
 } ]
 
 [node name="CannonBall" type="Area2D" groups=["Projectile"]]
+scale = Vector2( 0.1, 0.1 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]

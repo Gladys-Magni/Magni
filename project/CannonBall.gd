@@ -8,7 +8,7 @@ onready var spr = $Sprite
 var exploding=false
 var movement=Vector2()
 var startpos=Vector2()
-const SPEED = 50
+var SPEED = 40
 const distructiondistance=60
 func _length(var vec):
 	return sqrt(vec.x*vec.x+vec.y*vec.y)
@@ -26,7 +26,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if(!exploding):		
-		global_position+= movement
+		global_position += movement.normalized()*SPEED/100
 		if(_length(self.global_position-startpos)>distructiondistance):
 			_explode()
 		#for body in get_overlapping_bodies():
@@ -60,3 +60,8 @@ func _on_Explosion_animation_finished():
 	pass # Replace with function body.
 
 
+
+
+func _on_VisibilityNotifier2D_viewport_exited(viewport):
+	_explode()
+	pass # Replace with function body.
