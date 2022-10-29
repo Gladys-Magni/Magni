@@ -4,19 +4,16 @@ extends Node2D
 
 class_name Enemy
 
-# velocity vector
-var velocity_vector = Vector2()
-
 # speed the object moves with
 var speed := 0
+
+# range of sight as rectangle because circles are too hard >:)
+var sight := 300
 
 # player (only one for now)
 onready var player := get_node("/root/Game/Player")
 
-func _init(speed = 10):
-	velocity_vector = Vector2()
-	velocity_vector.x = 1
-	velocity_vector.y = 1
+func _init(speed = 5):
 	self.speed = speed
 	
 
@@ -26,16 +23,28 @@ func _ready():
 
 # get player position and move towards him
 func move():
-	var current_pos = get_position()
-	var player_pos = player.get_position()
-	velocity_vector.x = player_pos.x - current_pos.x
-	velocity_vector.y = player_pos.y - current_pos.y
+	var velocity_vector = get_delta_vector()
 	velocity_vector = velocity_vector.normalized() * speed;
 	set_position(get_position() + velocity_vector)
-	#print(player.get_position())
+
+# check if player is in sight
+# pythagoras: root of (x²+y²) = radius
+func in_sight():
+	var delta_vector = get_delta_vector()
+	#return abs(delta_vector.x) <= sight && abs(delta_vector.y) <= sight
+	return sqrt(pow(delta_vector.x, 2) + pow(delta_vector.y, 2)) <= sight
+
+func get_delta_vector():
+	var current_pos = get_position()
+	var player_pos = player.get_position()
+	var delta_x = player_pos.x - current_pos.x
+	var delta_y = player_pos.y - current_pos.y
+
+	return Vector2(delta_x, delta_y)
 
 func _physics_process(delta):
-	move()
+	if(in_sight()):
+		move()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
