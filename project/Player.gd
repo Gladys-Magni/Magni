@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var boat = $Boat
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -7,7 +8,7 @@ extends Node2D
 var speed = 20
 var velocity = Vector2()
 
-
+var cannon_ball= preload("res://projectile/CannonBall.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -24,6 +25,16 @@ func get_input():
 		velocity.y += 1
 	if Input.is_action_pressed("forward"):
 		velocity.y -= 1
+	if Input.is_action_just_pressed("shoot"):
+		var cannonBall = cannon_ball.instance()
+		get_tree().current_scene.add_child(cannonBall)
+		cannonBall.global_position=boat.global_position
+		cannonBall.startpos=boat.global_position
+		var dir = boat.global_position.direction_to(get_global_mouse_position())
+		dir.normalized()
+		cannonBall.movement= dir
+
+
 	velocity = velocity.normalized() * speed
 	
 
