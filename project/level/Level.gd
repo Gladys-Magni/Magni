@@ -7,6 +7,8 @@ const zoneDensity := 0.25
 const zoneSize := 20
 const enemyDensity := 5
 
+const islandDensity = 0.1
+
 const sizeX := tileSize * tileAmount
 const sizeY := tileSize * tileAmount
 const playerSpawn := Vector2(0,0)
@@ -49,14 +51,26 @@ func spawn_enemies(x, y):
 			$EnemyCollection.add_child(enemy)
 
 
-
 func placeIslands():
-	var x = floor(rand_range(upperLeft.x,bottomRight.x))
-	var y = floor(rand_range(upperLeft.y,bottomRight.y))
-	islands.shuffle()
-	var island = islands[0].instance()
-	island.position = Vector2(300,300)
-	$Islands.add_child(island)
+	var islandAmount = floor(tileAmount * tileAmount * islandDensity)
+	var i = 0
+	while i < islandAmount:
+		var x = floor(rand_range(upperLeft.x,bottomRight.x))
+		var y = floor(rand_range(upperLeft.y,bottomRight.y))
+		if abs(playerSpawn.x - x) < 400 or abs(playerSpawn.y - y) < 400:
+			continue
+		var failed = false
+		for child in $Islands.get_children():
+				if abs(child.position.x - x) < 400 or abs(child.position.y - y) < 400:
+					failed = true
+					break
+		if failed:
+			continue
+		islands.shuffle()
+		var island = islands[0].instance()
+		island.position = Vector2(x, y)
+		$Islands.add_child(island)
+		i += 1
 	
 	
 func initBackground():
