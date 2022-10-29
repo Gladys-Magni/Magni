@@ -268,10 +268,6 @@ anims/RunLeft = SubResource( 5 )
 anims/RunRight = SubResource( 3 )
 anims/RunUp = SubResource( 6 )
 
-[node name="Sprite" type="Sprite" parent="Kapitaen"]
-texture = ExtResource( 5 )
-hframes = 4
-
 [node name="AnimationTree" type="AnimationTree" parent="Kapitaen"]
 tree_root = SubResource( 21 )
 anim_player = NodePath("../AnimationPlayer")
