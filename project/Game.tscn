@@ -95,9 +95,6 @@ animations = [ {
 
 [node name="Game" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 512, 302 )
-
 [node name="EnemyCollection" type="Node2D" parent="."]
 
 [node name="ProjectileCollection" type="Node2D" parent="."]
