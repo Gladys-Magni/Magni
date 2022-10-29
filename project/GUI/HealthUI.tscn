@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GUI/UI/HeartUIEmpty.png" type="Texture" id=1]
+[ext_resource path="res://GUI/UI/HeartUIFull.png" type="Texture" id=2]
+
+[node name="HealthUI" type="Control"]
+margin_right = 297.0
+margin_bottom = 60.0
+
+[node name="HeartUIEmpty" type="TextureRect" parent="."]
+margin_right = 59.0
+margin_bottom = 13.0
+rect_scale = Vector2( 5, 5 )
+texture = ExtResource( 1 )
+stretch_mode = 2
+
+[node name="HeartUIFull" type="TextureRect" parent="."]
+margin_right = 45.0
+margin_bottom = 11.0
+rect_scale = Vector2( 5, 5 )
+texture = ExtResource( 2 )
+stretch_mode = 2
