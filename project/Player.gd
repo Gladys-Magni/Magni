@@ -32,4 +32,5 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	set_position(get_position() + velocity)
-	velocity = Vector2(0,0)
+	#velocity = Vector2(0,0)
+	#
