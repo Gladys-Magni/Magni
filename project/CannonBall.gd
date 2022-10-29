@@ -1,7 +1,7 @@
 extends Node2D
 
-onready var explosion= $Explosion
-onready var spr = $Sprite
+onready var explosion= $explosion
+onready var spr = $cannonBallTexture
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -44,10 +44,6 @@ func _on_CannonBall_area_entered(area):
 	#pass # Replace with function body.
 
 
-func _on_VisibilityNotifier2D_screen_exited():
-	_explode()
-	pass # Replace with function body.
-
 
 func _on_CannonBall_body_entered(body):
 	if(_length(self.global_position-startpos)>10):
@@ -55,7 +51,7 @@ func _on_CannonBall_body_entered(body):
 	#pass # Replace with function body.
 
 
-func _on_Explosion_animation_finished():
+func _on_explosion_animation_finished():
 	queue_free()
 	pass # Replace with function body.
 
@@ -63,5 +59,10 @@ func _on_Explosion_animation_finished():
 
 
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
+	_explode()
+	pass # Replace with function body.
+
+
+func _on_VisibilityNotifier2D_screen_exited():
 	_explode()
 	pass # Replace with function body.

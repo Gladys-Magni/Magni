@@ -5,16 +5,25 @@ const MAX_SPEED = 200
 const FRICTION = 10
 
 var velocity = Vector2.ZERO
-
+var cannon_ball= preload("res://projectile/CannonBall.tscn")
+onready var boat=$boat
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
-
+func _set_up_cannon_ball():
+	var cannonBall = cannon_ball.instance()
+	get_tree().current_scene.add_child(cannonBall)
+	cannonBall.global_position=boat.global_position
+	cannonBall.startpos=boat.global_position
+	var dir = boat.global_position.direction_to(get_global_mouse_position())
+	dir.normalized()
+	cannonBall.movement= dir
 	
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	input_vector.y = Input.get_action_strength("backward") - Input.get_action_strength("forward")
-	input_vector = input_vector.normalized()
+	if Input.is_action_just_pressed("shoot"):
+		_set_up_cannon_ball()
 	
 	if input_vector != Vector2.ZERO:
 		animationTree.set("parameters/Idle/blend_position", input_vector)
