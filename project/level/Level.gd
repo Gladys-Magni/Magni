@@ -14,6 +14,7 @@ var upperLeft = Vector2(0,0)
 var bottomRight = Vector2(sizeX, sizeY)
 
 var dangerZoneSprite = preload("res://level/DangerZoneSprite.tscn")
+var island1 = preload("res://level/Island.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -42,8 +43,11 @@ func placeEnemyZones():
 	
 	
 func placeIslands():
-	#logic to position the islands
-	pass
+	var x = floor(rand_range(upperLeft.x,bottomRight.x))
+	var y = floor(rand_range(upperLeft.y,bottomRight.y))
+	var island = island1.instance()
+	island.position = Vector2(300,300)
+	$Islands.add_child(island)
 	
 func initBackground():
 	for x in range(sizeX / tileSize):
