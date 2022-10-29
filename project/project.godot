@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://enemy/Enemy.gd"
+}, {
+"base": "Enemy",
+"class": "EnemyBoat",
+"language": "GDScript",
+"path": "res://enemy/EnemyBoat.gd"
+} ]
+_global_script_class_icons={
+"Enemy": "",
+"EnemyBoat": ""
+}
+
 [application]
 
 config/name="magni"
