@@ -15,7 +15,7 @@ var upperLeft = Vector2(0,0)
 var bottomRight = Vector2(sizeX, sizeY)
 
 var dangerZoneSprite = preload("res://level/DangerZoneSprite.tscn")
-var island1 = preload("res://level/Island.tscn")
+var island1 = preload("res://level/Island1.tscn")
 var enemyBoat = preload("res://enemy/EnemyBoat.tscn")
 
 # Called when the node enters the scene tree for the first time.
