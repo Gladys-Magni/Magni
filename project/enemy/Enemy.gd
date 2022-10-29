@@ -29,7 +29,7 @@ func _init(speed = 5, sight = 300, hp = 100):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# load player when entering tree
-	player = get_node("/root/Game/Player")
+	player = get_node("/root/Game/Kapitaen")
 	register_attacks()
 
 # get player position and move towards him
