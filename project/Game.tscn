@@ -95,11 +95,7 @@ animations = [ {
 
 [node name="Game" type="Node2D"]
 
-<<<<<<< HEAD
 [node name="Camera2D" type="Camera2D" parent="."]
-=======
-[node name="EnemyCollection" type="Node2D" parent="."]
->>>>>>> refs/remotes/origin/main
 
 [node name="ProjectileCollection" type="Node2D" parent="."]
 
@@ -123,9 +119,4 @@ frame = 1
 script = ExtResource( 2 )
 
 [node name="Boat" type="Sprite" parent="Player"]
-<<<<<<< HEAD
 texture = ExtResource( 1 )
-=======
-position = Vector2( 290, 182 )
-texture = ExtResource( 1 )
->>>>>>> refs/remotes/origin/main
