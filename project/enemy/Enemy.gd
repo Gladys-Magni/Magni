@@ -5,21 +5,27 @@ extends Node2D
 class_name Enemy
 
 # speed the object moves with
-var speed := 0
+var speed
 
 # range of sight as rectangle because circles are too hard >:)
-var sight := 300
+var sight
+
+# health points
+var hp
 
 # player (only one for now)
-onready var player := get_node("/root/Game/Player")
+var player
 
-func _init(speed = 5):
+func _init(speed = 5, sight = 300, hp = 100):
 	self.speed = speed
+	self.sight = sight
+	self.hp = hp
 	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	# load player when entering tree
+	player = get_node("/root/Game/Player")
 
 # get player position and move towards him
 func move():
