@@ -3,8 +3,17 @@ extends Node2D
 const tileAmount := 5
 const tileSize := 400
 
+const zoneDensity := 0.25
+const zoneSize := 20
+
 const sizeX := tileSize * tileAmount
 const sizeY := tileSize * tileAmount
+const playerSpawn := Vector2(0,0)
+
+var upperLeft = Vector2(0,0)
+var bottomRight = Vector2(sizeX, sizeY)
+
+var dangerZoneSprite = preload("res://level/DangerZoneSprite.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,7 +24,20 @@ func _ready():
 	
 	
 func placeEnemyZones():
-	#logic to set enemy zones
+	var zoneAmount = floor(tileAmount * tileAmount * zoneDensity)
+	var i = 0
+	while i < zoneAmount:
+		var x = floor(rand_range(upperLeft.x,bottomRight.x))
+		var y = floor(rand_range(upperLeft.y,bottomRight.y))
+		if (x < playerSpawn.x and x + zoneSize > playerSpawn.x):
+			if y < playerSpawn.y and y + zoneSize > playerSpawn.y:
+				continue
+		
+		i += 1
+		var zone = dangerZoneSprite.instance()
+		zone.position = Vector2(x,y)
+		$Zones.add_child(zone)
+				
 	pass
 	
 	
@@ -31,13 +53,13 @@ func initBackground():
 			
 func placeSprite(x,y ):
 	var tile = AnimatedSprite.new()
-	tile.frames = $AnimatedSprite.frames
+	tile.frames = $WaterSprite.frames
 	tile.animation = "waves"	
 	tile.centered = true
 	tile.playing = true
-	tile.speed_scale = 0.3
+	tile.speed_scale = 1
 	tile.offset = Vector2(x,y)
-	add_child(tile)
+	$Water.add_child(tile)
 	
 	
 func _physics_process(delta):

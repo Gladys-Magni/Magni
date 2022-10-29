@@ -105,13 +105,18 @@ position = Vector2( 512, 302 )
 [node name="Level" type="Node2D" parent="."]
 script = ExtResource( 3 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Level"]
+[node name="Water" type="Node2D" parent="Level"]
+
+[node name="Islands" type="Node2D" parent="Level"]
+
+[node name="Zones" type="Node2D" parent="Level"]
+
+[node name="WaterSprite" type="AnimatedSprite" parent="Level"]
 visible = false
 position = Vector2( 460, 178 )
 frames = SubResource( 17 )
 animation = "waves"
-frame = 8
-playing = true
+frame = 1
 
 [node name="Player" type="Node2D" parent="."]
 script = ExtResource( 2 )
