@@ -245,11 +245,13 @@ animation = "waves"
 
 [node name="EnemyCollection" type="Node2D" parent="Level"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Kapitaen" type="KinematicBody2D" parent="."]
 position = Vector2( 69, 109 )
 script = ExtResource( 6 )
+
+[node name="Camera2D" type="Camera2D" parent="Kapitaen"]
+position = Vector2( -69, -109 )
+current = true
 
 [node name="Sprite" type="Sprite" parent="Kapitaen"]
 texture = ExtResource( 5 )
