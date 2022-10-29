@@ -16,6 +16,8 @@ var bottomRight = Vector2(sizeX, sizeY)
 
 var dangerZoneSprite = preload("res://level/DangerZoneSprite.tscn")
 var island1 = preload("res://level/Island1.tscn")
+var island2 = preload("res://level/Island2.tscn")
+var islands = [island1, island2]
 var enemyBoat = preload("res://enemy/EnemyBoat.tscn")
 
 # Called when the node enters the scene tree for the first time.
@@ -51,7 +53,8 @@ func spawn_enemies(x, y):
 func placeIslands():
 	var x = floor(rand_range(upperLeft.x,bottomRight.x))
 	var y = floor(rand_range(upperLeft.y,bottomRight.y))
-	var island = island1.instance()
+	islands.shuffle()
+	var island = islands[0].instance()
 	island.position = Vector2(300,300)
 	$Islands.add_child(island)
 	
