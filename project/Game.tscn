@@ -1,9 +1,20 @@
+<<<<<<< HEAD
 [gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/boat.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
 [ext_resource path="res://level/Level.gd" type="Script" id=3]
 [ext_resource path="res://assets/Wellen.png" type="Texture" id=4]
+=======
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/boat.png" type="Texture" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://enemy/Enemy.gd" type="Script" id=3]
+[ext_resource path="res://assets/enemy.png" type="Texture" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://enemy/EnemyBoat.gd" type="Script" id=6]
+>>>>>>> enemy
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
@@ -122,5 +133,26 @@ frame = 1
 script = ExtResource( 2 )
 
 [node name="Boat" type="Sprite" parent="Player"]
-position = Vector2( 290, 182 )
 texture = ExtResource( 1 )
+<<<<<<< HEAD
+=======
+
+[node name="EnemyCollection" type="Node2D" parent="."]
+
+[node name="Enemy1" type="Node2D" parent="EnemyCollection"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="EnemyCollection/Enemy1"]
+texture = ExtResource( 4 )
+
+[node name="Enemy2" type="Node2D" parent="EnemyCollection"]
+position = Vector2( 500, 500 )
+script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="EnemyCollection/Enemy2"]
+texture = ExtResource( 5 )
+
+[node name="ProjectileCollection" type="Node2D" parent="."]
+
+[node name="Level" type="Node2D" parent="."]
+>>>>>>> enemy
