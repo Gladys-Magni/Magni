@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://level/Level.gd" type="Script" id=1]
 [ext_resource path="res://assets/Wellen.png" type="Texture" id=2]
@@ -93,108 +93,6 @@ animations = [ {
 "speed": 1.0
 } ]
 
-[sub_resource type="Animation" id=9]
-resource_name = "IdleDown"
-length = 0.1
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 3 ]
-}
-
-[sub_resource type="Animation" id=10]
-resource_name = "IdleLeft"
-length = 0.1
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "IdleRight"
-length = 0.1
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 2 ]
-}
-
-[sub_resource type="Animation" id=8]
-resource_name = "IdleUp"
-length = 0.1
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-
-[sub_resource type="Animation" id=2]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0 ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "RunDown"
-length = 0.6
-loop = true
-
-[sub_resource type="Animation" id=5]
-resource_name = "RunLeft"
-length = 0.6
-loop = true
-
-[sub_resource type="Animation" id=3]
-resource_name = "RunRight"
-length = 0.6
-loop = true
-
-[sub_resource type="Animation" id=6]
-resource_name = "RunUp"
-length = 0.6
-
 [sub_resource type="AnimationNodeAnimation" id=24]
 animation = "IdleLeft"
 
@@ -258,15 +156,6 @@ texture = ExtResource( 5 )
 hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Kapitaen"]
-anims/IdleDown = SubResource( 9 )
-anims/IdleLeft = SubResource( 10 )
-anims/IdleRight = SubResource( 7 )
-anims/IdleUp = SubResource( 8 )
-anims/RESET = SubResource( 2 )
-anims/RunDown = SubResource( 4 )
-anims/RunLeft = SubResource( 5 )
-anims/RunRight = SubResource( 3 )
-anims/RunUp = SubResource( 6 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Kapitaen"]
 tree_root = SubResource( 21 )
