@@ -8,7 +8,6 @@ extends Control
 onready var player := get_node("/root/Game/Kapitaen")
 
 const baseCost := 10
-const baseStats = {"Health": 1, "CannonBalls": 1, "DamageMultiplicator": 1, "BoatSpeed": 1, "Range": 1, "ReloadTime": 5}
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,19 +16,52 @@ func _ready():
 
 
 func _on_Reload_Button_pressed():
+	if !canPay():
+		return #display error
 	player.increaseLevel()
+	player.decreaseReloadTime()
+	if player.getReloadTime() <= 1:
+		$"Reload Button".visible = false
 
 func _on_Damage_Button_pressed():
+	if !canPay():
+		return #display error
 	player.increaseLevel()
+	player.increaseDamage()
+	if player.getDamageMultiplicator() >= 5:
+		$"Damage Button".visible = false
 
 func _on_Health_Button_pressed():
+	if !canPay():
+		return #display error
 	player.increaseLevel()
+	player.increaseHealth()
+	if player.getHealth() >= 5:
+		$"Health Button".visible = false
 	
 func _on_Speed_Button_pressed():
+	if !canPay():
+		return #display error
 	player.increaseLevel()
+	player.increaseBoatSpeed()
+	if player.getBoatSpeed() >= 5:
+		$"Speed Button".visible = false
 	
 func _on_Ball_Button_pressed():
+	if !canPay():
+		return #display error
 	player.increaseLevel()
+	player.increaseCannonBalls()
+	if player.getCannonBalls() >= 5:
+		$"Ball Button".visible = false
 	
 func _on_Range_Button_pressed():
+	if !canPay():
+		return #display error
 	player.increaseLevel()
+	player.increaseRange()
+	if player.getRange() >= 5:
+		$"Range Button".visible = false
+	
+func canPay():
+	return player.getCoins() >= baseCost * player.getLevel()
