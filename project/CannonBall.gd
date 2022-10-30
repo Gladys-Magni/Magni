@@ -31,6 +31,7 @@ func _splash():
 	explosion.hide()
 	exploding=true
 	$splash.play()
+	$SPLASH.play()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
