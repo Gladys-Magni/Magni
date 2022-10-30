@@ -7,11 +7,13 @@ onready var animation_tree = $AnimationTree
 # get deatch animation from scene tree
 onready var death_animation = $DeathAnimation
 
+onready var coin = preload("res://loot/Coin.tscn")
+
 # speed of boat is 7
 # add shoot as attack every 5 		seconds
 func _init():
-	._init(2, 500 ,100, 500)
-	.add_attack("shoot", 5.0)
+	._init(2, 500 ,100, 50)
+	.add_attack("shoot", 1.0)
 # shoot if the player is in range
 func move_towards_player():
 	.move_towards_player()
@@ -31,11 +33,23 @@ func play_death_animation():
 func _ready():
 	pass
 	
-
-# Called when the node enters the scene tree for the first time.
-	
+func _die():
+	._die()
+	$EnemyTexture.hide()
+	play_death_animation()
 
 
 func _on_Timer_timeout():
 	.shoot()
 	pass # Replace with function body.
+
+
+func _on_DeathAnimation_animation_finished():
+	drop_loot()
+	queue_free()
+
+func drop_loot():
+	var one_coin = coin.instance()
+	one_coin.position = get_position()
+	var level = get_node("/root/Game/Level")
+	level.add_child(one_coin)

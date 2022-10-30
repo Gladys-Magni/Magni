@@ -9,7 +9,7 @@ resource_name = "IdleDown"
 length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("EnemyTexture:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -26,7 +26,7 @@ resource_name = "IdleLeft"
 length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("EnemyTexture:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -43,7 +43,7 @@ resource_name = "IdleRight"
 length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("EnemyTexture:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -60,7 +60,7 @@ resource_name = "IdleUp"
 length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("EnemyTexture:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -249,8 +249,4 @@ scale = Vector2( 0.015, 0.0142188 )
 position = Vector2( -1.5, 12.5 )
 shape = SubResource( 31 )
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.431
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="DeathAnimation" to="." method="_on_DeathAnimation_animation_finished"]

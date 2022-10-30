@@ -31,6 +31,9 @@ var random_vector
 # move random for i iterations
 var random_i
 
+# literally dying right now
+var dying
+
 func _init(speed = 5, sight = 300, closest=50, hp = 100):
 	self.closest=closest
 	self.speed = speed
@@ -40,6 +43,7 @@ func _init(speed = 5, sight = 300, closest=50, hp = 100):
 	attack_map = {}
 	random_vector = Vector2()
 	random_i = 0
+	dying = false
 	
 
 # Called when the node enters the scene tree for the first time.
@@ -50,12 +54,11 @@ func _ready():
 
 func move():
 	var tooClose = in_rang(closest)
-	if(in_rang(sight) and !tooClose):
+	if dying:
+		return
+	elif in_rang(sight) and !tooClose:
 		move_towards_player()
-	
 	else:
-		move_random()
-	if(tooClose):
 		move_random()
 
 # get player position and move towards him
@@ -117,9 +120,10 @@ func shoot():
 	cannonBall.global_position=self.global_position
 	cannonBall.startpos=self.global_position
 	cannonBall.movement= direction
+
 func _die():
-	#add animation player
-	queue_free()
+	dying = true
+
 func _physics_process(delta):
 	move()
 	if(!hp>0):
