@@ -2,8 +2,8 @@
 
 [ext_resource path="res://level/Level.gd" type="Script" id=1]
 [ext_resource path="res://assets/Wellen.png" type="Texture" id=2]
-[ext_resource path="res://level/Shop.tscn" type="PackedScene" id=3]
-[ext_resource path="res://sounds/water.mp3" type="AudioStream" id=4]
+[ext_resource path="res://GUI/HealthUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GUI/CannonUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://player/ship/Ship/spritesheet charship.png" type="Texture" id=5]
 [ext_resource path="res://player/Kapitaen.gd" type="Script" id=6]
 
@@ -227,8 +227,8 @@ start_node = "Idle"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=22]
 
 [sub_resource type="CapsuleShape2D" id=23]
-radius = 9.0
-height = 40.0
+radius = 17.0001
+height = 49.9995
 
 [node name="Game" type="Node2D"]
 
@@ -253,7 +253,6 @@ animation = "waves"
 visible = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Level"]
-stream = ExtResource( 4 )
 volume_db = -15.731
 autoplay = true
 
@@ -263,7 +262,21 @@ script = ExtResource( 6 )
 [node name="Camera2D" type="Camera2D" parent="Kapitaen"]
 current = true
 
+[node name="HealthUI" parent="Kapitaen/Camera2D" instance=ExtResource( 3 )]
+margin_left = -798.0
+margin_top = -446.0
+margin_right = -440.0
+margin_bottom = -377.0
+
+[node name="CannonUI" parent="Kapitaen/Camera2D" instance=ExtResource( 4 )]
+margin_left = -797.0
+margin_top = 344.0
+margin_right = -356.0
+margin_bottom = 422.0
+
 [node name="boat" type="Sprite" parent="Kapitaen"]
+position = Vector2( 1, -1 )
+scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 5 )
 hframes = 4
 
@@ -286,6 +299,5 @@ parameters/playback = SubResource( 22 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Kapitaen"]
-position = Vector2( -1, 5 )
 rotation = -1.5708
 shape = SubResource( 23 )
