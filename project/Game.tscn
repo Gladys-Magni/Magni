@@ -246,6 +246,7 @@ graph_offset = Vector2( -145.885, 0 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=22]
 
 [node name="Game" type="Node2D"]
+script = ExtResource( 15 )
 
 [node name="Level" type="Node2D" parent="."]
 script = ExtResource( 1 )
