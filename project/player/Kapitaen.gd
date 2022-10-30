@@ -4,7 +4,7 @@ const ACCELERATION = 1
 const MAX_SPEED = 200
 const FRICTION = 1
 var inShop = false
-var stats = {"Health": 1, "CannonBalls": 1, "Coins": 0, "DamageMultiplicator": 1, "BoatSpeed": 1, "Range": 1, "ReloadTime": 5}
+var stats = {"Health": 1, "CannonBalls": 1, "Coins": 1000, "DamageMultiplicator": 1, "BoatSpeed": 1, "Range": 1, "ReloadTime": 5}
 var level = 1
 
 var velocity = Vector2.ZERO
