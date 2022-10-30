@@ -1,8 +1,9 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://level/Level.gd" type="Script" id=1]
 [ext_resource path="res://assets/Wellen.png" type="Texture" id=2]
 [ext_resource path="res://level/Shop.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sounds/water.mp3" type="AudioStream" id=4]
 [ext_resource path="res://player/ship/Ship/spritesheet charship.png" type="Texture" id=5]
 [ext_resource path="res://player/Kapitaen.gd" type="Script" id=6]
 
@@ -250,6 +251,11 @@ animation = "waves"
 
 [node name="Shop" parent="Level" instance=ExtResource( 3 )]
 visible = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Level"]
+stream = ExtResource( 4 )
+volume_db = -15.731
+autoplay = true
 
 [node name="Kapitaen" type="KinematicBody2D" parent="."]
 script = ExtResource( 6 )
