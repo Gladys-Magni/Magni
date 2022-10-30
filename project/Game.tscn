@@ -1,11 +1,19 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://level/Level.gd" type="Script" id=1]
 [ext_resource path="res://assets/Wellen.png" type="Texture" id=2]
-[ext_resource path="res://GUI/HealthUI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://GUI/CannonUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://level/Shop.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sounds/water.mp3" type="AudioStream" id=4]
 [ext_resource path="res://player/ship/Ship/spritesheet charship.png" type="Texture" id=5]
 [ext_resource path="res://player/Kapitaen.gd" type="Script" id=6]
+[ext_resource path="res://MausIcon.gd" type="Script" id=7]
+[ext_resource path="res://ShootTimout.gd" type="Script" id=8]
+[ext_resource path="res://cannons.gd" type="Script" id=9]
+[ext_resource path="res://assets/ball.png" type="Texture" id=10]
+[ext_resource path="res://assets/stop.png" type="Texture" id=11]
+[ext_resource path="res://GUI/HealthUI.tscn" type="PackedScene" id=12]
+[ext_resource path="res://projectile/Canonball.png" type="Texture" id=13]
+[ext_resource path="res://GUI/CannonUI.tscn" type="PackedScene" id=14]
 
 [sub_resource type="AtlasTexture" id=29]
 flags = 4
@@ -94,6 +102,11 @@ animations = [ {
 "name": "waves",
 "speed": 1.0
 } ]
+
+[sub_resource type="StyleBoxFlat" id=45]
+bg_color = Color( 0.576471, 0.105882, 0.105882, 1 )
+
+[sub_resource type="StyleBoxFlat" id=46]
 
 [sub_resource type="Animation" id=9]
 resource_name = "IdleDown"
@@ -249,26 +262,64 @@ animation = "waves"
 
 [node name="ProjectileCollection" type="Node2D" parent="Level"]
 
-[node name="Shop" parent="Level" instance=ExtResource( 3 )]
-visible = false
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Level"]
+stream = ExtResource( 4 )
 volume_db = -15.731
 autoplay = true
 
-[node name="Kapitaen" type="KinematicBody2D" parent="."]
+[node name="Shop" parent="Level" instance=ExtResource( 3 )]
+visible = false
+
+[node name="CannonProgress" type="Control" parent="."]
+margin_left = 9.0
+margin_top = 8.0
+margin_right = 49.0
+margin_bottom = 48.0
+script = ExtResource( 8 )
+
+[node name="ProgressBar" type="ProgressBar" parent="CannonProgress"]
+margin_left = -9.0
+margin_top = -8.0
+margin_right = 47.0
+margin_bottom = 6.0
+custom_styles/fg = SubResource( 45 )
+custom_styles/bg = SubResource( 46 )
+percent_visible = false
+
+[node name="Sprite" type="Sprite" parent="CannonProgress"]
+position = Vector2( -9, -1 )
+scale = Vector2( 0.015, 0.0142188 )
+texture = ExtResource( 10 )
+
+[node name="MouseIcon" type="Node2D" parent="."]
+position = Vector2( 391, 69 )
+script = ExtResource( 7 )
+
+[node name="shoot" type="Sprite" parent="MouseIcon"]
+position = Vector2( 54, 181 )
+scale = Vector2( 0.021875, 0.0161133 )
+texture = ExtResource( 13 )
+
+[node name="dontshoot" type="Sprite" parent="MouseIcon"]
+position = Vector2( 54, 181.518 )
+scale = Vector2( 0.0238502, 0.0187993 )
+texture = ExtResource( 11 )
+
+[node name="Kapitaen" type="KinematicBody2D" parent="." groups=["Boat"]]
+position = Vector2( 3.05176e-05, 1.52588e-05 )
+scale = Vector2( 1, 1 )
 script = ExtResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="Kapitaen"]
 current = true
 
-[node name="HealthUI" parent="Kapitaen/Camera2D" instance=ExtResource( 3 )]
+[node name="HealthUI" parent="Kapitaen/Camera2D" instance=ExtResource( 12 )]
 margin_left = -798.0
 margin_top = -446.0
 margin_right = -440.0
 margin_bottom = -377.0
 
-[node name="CannonUI" parent="Kapitaen/Camera2D" instance=ExtResource( 4 )]
+[node name="CannonUI" parent="Kapitaen/Camera2D" instance=ExtResource( 14 )]
 margin_left = -797.0
 margin_top = 344.0
 margin_right = -356.0
@@ -301,3 +352,11 @@ parameters/Idle/blend_position = Vector2( 0, 0 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Kapitaen"]
 rotation = -1.5708
 shape = SubResource( 23 )
+
+[node name="timer" type="Timer" parent="Kapitaen"]
+
+[node name="cannons" type="Node2D" parent="Kapitaen"]
+position = Vector2( -69, -109 )
+script = ExtResource( 9 )
+
+[connection signal="timeout" from="Kapitaen/timer" to="Kapitaen" method="_on_timer_timeout"]

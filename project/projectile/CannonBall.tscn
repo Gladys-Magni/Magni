@@ -45,7 +45,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 330.25, 299.5 )
 
-[node name="CannonBall" type="Area2D"]
+[node name="CannonBall" type="Area2D" groups=["CannonBalls"]]
 scale = Vector2( 0.01, 0.01 )
 script = ExtResource( 1 )
 
