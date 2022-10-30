@@ -240,9 +240,8 @@ blend_point_3/pos = Vector2( 0, -1 )
 
 [sub_resource type="AnimationNodeStateMachine" id=21]
 states/Idle/node = SubResource( 28 )
-states/Idle/position = Vector2( 361, 138 )
+states/Idle/position = Vector2( 318, 171 )
 start_node = "Idle"
-graph_offset = Vector2( -145.885, 0 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=22]
 

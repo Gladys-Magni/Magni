@@ -2,6 +2,7 @@ extends Node2D
 
 onready var explosion= $explosion
 onready var spr = $cannonBallTexture
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -25,14 +26,19 @@ func _ready():
 	explosion.hide()
 	pass # Replace with function body.
 
-
+func _splash():
+	spr.hide()
+	explosion.hide()
+	exploding=true
+	$splash.play()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if(!exploding):		
 		global_position += movement.normalized()*SPEED/100
 		distanceToShip=Vector2(self.global_position-startpos).length()
 		if(distanceToShip>distructiondistance):
-			_explode()		#for body in get_overlapping_bodies():
+			_splash()		#for body in get_overlapping_bodies():
 			#if(body!=player):
 				#explode()
 			#queue_free() #delete object
@@ -70,3 +76,7 @@ func _on_VisibilityNotifier2D_viewport_exited(viewport):
 func _on_VisibilityNotifier2D_screen_exited():
 	_explode()
 	pass # Replace with function body.
+
+
+func _on_splash_animation_finished():
+	queue_free()
