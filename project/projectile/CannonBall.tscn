@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://CannonBall.gd" type="Script" id=1]
 [ext_resource path="res://projectile/Explosion.png" type="Texture" id=2]
 [ext_resource path="res://projectile/Canonball.png" type="Texture" id=3]
 [ext_resource path="res://sounds/explosion.mp3" type="AudioStream" id=4]
 [ext_resource path="res://assets/kisspng-animation-drawing-model-sheet-water-effect-5ac0b371870ee8.1969472515225782895532.png" type="Texture" id=5]
+[ext_resource path="res://sounds/[YT2mp3.info] - Water Splash - Sound Effects (320kbps).mp3" type="AudioStream" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -126,6 +127,9 @@ shape = SubResource( 8 )
 
 [node name="EXPLOSION" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
+
+[node name="SPLASH" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
 
 [connection signal="area_entered" from="." to="." method="_on_CannonBall_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_CannonBall_body_entered"]
