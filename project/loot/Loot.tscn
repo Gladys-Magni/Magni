@@ -24,6 +24,7 @@ shape = SubResource( 1 )
 
 [node name="CoinIdle" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
+frame = 2
 playing = true
 
 [connection signal="body_entered" from="." to="." method="_on_Loot_body_entered"]

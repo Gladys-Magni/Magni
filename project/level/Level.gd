@@ -24,9 +24,6 @@ func _ready():
 	initBackground()
 	placeEnemyZones()
 	placeIslands()
-	var one_coin = coin.instance()
-	one_coin.position = Vector2(100, 500)
-	$EnemyCollection.add_child(one_coin)
 	
 func placeEnemyZones():
 	var zoneAmount = floor(tileAmount * tileAmount * zoneDensity)
