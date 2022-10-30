@@ -4,7 +4,8 @@ const ACCELERATION = 1
 const MAX_SPEED = 200
 const FRICTION = 1
 var inShop = false
-var stats = {"Health": 1, "CannonBalls": 1, "Coins": 0, "DamageMultiplicator": 1, "BoatSpeed": 1, "Range": 1}
+var stats = {"Health": 1, "CannonBalls": 1, "Coins": 0, "DamageMultiplicator": 1, "BoatSpeed": 1, "Range": 1, "ReloadTime": 5}
+var level = 0
 
 var velocity = Vector2.ZERO
 
@@ -85,6 +86,25 @@ func getRange():
 func getReloadTime():
 	return stats["ReloadTime"]
 	
+func getLevel():
+	return self.level
+	
+func increaseLevel():
+	self.level += 1
+	
+func increaseHealth():
+	self.stats["Health"] += 1
+	
+func increaseDamage():
+	self.stats["DamageMultiplicator"] += 1
+	
+func increaseCannonBalls():
+	self.stats["CannonBalls"] += 1
+	
+func pay(coins):
+	self.stats["Coins"] -= coins
+	
+
 
 func _on_timer_timeout():
 	loaded=true
