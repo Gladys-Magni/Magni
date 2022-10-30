@@ -11,7 +11,7 @@ var speed
 var sight
 
 # health points
-var hp
+var hp = 500
 
 # player (only one for now)
 var player
