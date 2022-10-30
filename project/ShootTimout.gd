@@ -15,7 +15,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	set_global_position(cap.global_position+Vector2(100,100))
+	set_global_position(cap.global_position+Vector2(50,50))
 	if(!cap.loaded):
 		prog.value=100-(timer.time_left*100)
 	else:
