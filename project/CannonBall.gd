@@ -8,8 +8,9 @@ onready var spr = $cannonBallTexture
 var exploding=false
 var movement=Vector2()
 var startpos=Vector2()
-var SPEED = 40
-const distructiondistance=60
+var SPEED = 500
+const distructiondistance=600
+var distanceToShip=0
 func _length(var vec):
 	return sqrt(vec.x*vec.x+vec.y*vec.y)
 func _explode():
@@ -27,7 +28,8 @@ func _ready():
 func _physics_process(delta):
 	if(!exploding):		
 		global_position += movement.normalized()*SPEED/100
-		if(_length(self.global_position-startpos)>distructiondistance):
+		distanceToShip=Vector2(self.global_position-startpos).length()
+		if(distanceToShip>distructiondistance):
 			_explode()
 		#for body in get_overlapping_bodies():
 			#if(body!=player):
@@ -38,15 +40,11 @@ func _physics_process(delta):
 	
 
 func _on_CannonBall_area_entered(area):
-	if(_length(self.global_position-startpos)>10):
+	if(!area.is_in_group("CannonBalls")):
 		_explode()
 
-	#pass # Replace with function body.
-
-
-
 func _on_CannonBall_body_entered(body):
-	if(_length(self.global_position-startpos)>10):
+	if(!body.is_in_group("Boat")):
 		_explode()
 	#pass # Replace with function body.
 
