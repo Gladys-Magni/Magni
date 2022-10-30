@@ -137,7 +137,8 @@ func increaseRange():
 func pay(coins):
 	self.stats["Coins"] -= coins
 	
-
+func increaseCoins():
+	self.stats["Coins"] += 1
 
 func _on_timer_timeout():
 	loaded=true
