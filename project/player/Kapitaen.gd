@@ -4,7 +4,7 @@ const ACCELERATION = 1
 const MAX_SPEED = 200
 const FRICTION = 1
 var inShop = false
-var stats = {"Health": 1, "CannonBalls": 1, "Coins": 0, "DamageMultiplicator": 1, "BoatSpeed": 1, "Range": 1}
+var stats = {"Health": 1, "CannonBalls": 1, "Coins": 0, "DamageMultiplicator": 1, "BoatSpeed": 1, "Range": 1, "ReloadTime": 1}
 
 var velocity = Vector2.ZERO
 
@@ -41,6 +41,7 @@ func _physics_process(delta):
 
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Run/blend_position", input_vector)
+		
 		CurrentDirection=input_vector
 		velocity += input_vector * ACCELERATION * delta
 		velocity = velocity.clamped(MAX_SPEED * delta)
