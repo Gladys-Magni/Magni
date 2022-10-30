@@ -366,5 +366,7 @@ script = ExtResource( 9 )
 position = Vector2( 391, 69 )
 stream = ExtResource( 15 )
 
+[node name="ProjectileCollection" type="Node2D" parent="."]
+
 [connection signal="timeout" from="Kapitaen/timer" to="Kapitaen" method="_on_timer_timeout"]
 [connection signal="finished" from="Kapitaen/CanonShootAudioPlayer" to="Kapitaen" method="_on_AudioStreamPlayer2D_finished"]

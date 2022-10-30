@@ -8,18 +8,11 @@ onready var animation_tree = $AnimationTree
 onready var death_animation = $DeathAnimation
 
 # speed of boat is 7
-# add shoot as attack every 5 seconds
+# add shoot as attack every 5 		seconds
 func _init():
-	._init(2, 200, 100)
-	add_attack("shoot", 5.0)
-
+	._init(2, 500 ,100, 500)
+	.add_attack("shoot", 5.0)
 # shoot if the player is in range
-func shoot():
-	if(!in_sight()):
-		return
-	
-	print("shoot")
-	
 func move_towards_player():
 	.move_towards_player()
 	update_sprite_direction()
@@ -38,3 +31,11 @@ func play_death_animation():
 func _ready():
 	pass
 	
+
+# Called when the node enters the scene tree for the first time.
+	
+
+
+func _on_Timer_timeout():
+	.shoot()
+	pass # Replace with function body.

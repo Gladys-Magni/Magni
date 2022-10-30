@@ -12,6 +12,7 @@ var velocity = Vector2.ZERO
 
 var CurrentDirection = Vector2(0,1)
 onready var boat=$boat
+
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var mouseIcon = get_node("/root/Game/MouseIcon")

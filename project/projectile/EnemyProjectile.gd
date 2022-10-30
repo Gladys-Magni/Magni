@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 onready var explosion= $explosion
 onready var spr = $cannonBallTexture
@@ -19,7 +19,6 @@ func _explode():
 	explosion.show()
 	exploding=true
 	explosion.play("explosion")
-	$EXPLOSION.play()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	explosion.hide()
@@ -32,25 +31,21 @@ func _physics_process(delta):
 		global_position += movement.normalized()*SPEED/100
 		distanceToShip=Vector2(self.global_position-startpos).length()
 		if(distanceToShip>distructiondistance):
+			print("dist")
 			_explode()		#for body in get_overlapping_bodies():
 			#if(body!=player):
 				#explode()
 			#queue_free() #delete object
 
 	pass
+
 	
-
-func _on_CannonBall_area_entered(area):
-	if(!area.is_in_group("CannonBalls")):
+func _on_EnemyProjectile_body_entered(body):
+	if(!body.is_in_group("Enemies")):
 		_explode()
-	if(area.is_in_group("Enemies")):
-		area.hp-=dmg
-		_explode()
-		
-
-func _on_CannonBall_body_entered(body):
-	if(!body.is_in_group("Boat")):
-		_explode()
+	if(body.is_in_group("Boat")):
+		body.health-=0.2
+	pass # Replace with function body.
 	
 	#pass # Replace with function body.
 
@@ -62,11 +57,21 @@ func _on_explosion_animation_finished():
 
 
 
-func _on_VisibilityNotifier2D_viewport_exited(viewport):
-	_explode()
+func _on_EnemyProjectile_area_entered(area):
+	if(!area.is_in_group("Enemies") and !area.is_in_group("EnemieProjectile")):
+		_explode()
+	if(area.is_in_group("Boat")):
+		area.health-=0.2
 	pass # Replace with function body.
 
 
 func _on_VisibilityNotifier2D_screen_exited():
 	_explode()
 	pass # Replace with function body.
+
+
+func _on_VisibilityNotifier2D_viewport_exited(viewport):
+	_explode()
+	pass # Replace with function body.
+
+

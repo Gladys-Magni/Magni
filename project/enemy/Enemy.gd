@@ -3,19 +3,22 @@ extends Node2D
 # implements the Enemy class
 
 class_name Enemy
-
+onready var cannon_ball= preload("res://projectile/EnemyProjectile.tscn")
+onready var collection= get_node("/root/Game/ProjectileCollection")
+var direction=Vector2()
 # speed the object moves with
 var speed
 
 # range of sight as circles
 var sight
-
+var closest
+var chillzone=100
 # health points
-var hp
-
+var hp = 500
+var maxhp = 500
 # player (only one for now)
 var player
-
+var cametoclose
 # maps the function name of the attack to the wait time (attack speed)
 var attack_map
 
@@ -28,10 +31,12 @@ var random_vector
 # move random for i iterations
 var random_i
 
-func _init(speed = 2, sight = 300, hp = 100):
+func _init(speed = 5, sight = 300, closest=50, hp = 100):
+	self.closest=closest
 	self.speed = speed
 	self.sight = sight
 	self.hp = hp
+	self.maxhp=hp
 	attack_map = {}
 	random_vector = Vector2()
 	random_i = 0
@@ -44,15 +49,20 @@ func _ready():
 	register_attacks()
 
 func move():
-	if(in_sight()):
+	var tooClose = in_rang(closest)
+	if(in_rang(sight) and !tooClose):
 		move_towards_player()
+	
 	else:
+		move_random()
+	if(tooClose):
 		move_random()
 
 # get player position and move towards him
 func move_towards_player():
 	velocity_vector = get_delta_vector()
 	velocity_vector = velocity_vector.normalized() * speed;
+	direction=velocity_vector
 	set_position(get_position() + velocity_vector)
 
 func move_random():
@@ -68,9 +78,9 @@ func move_random():
 
 # check if player is in sight
 # pythagoras: root of (x²+y²) = radius
-func in_sight():
+func in_rang(var rang):
 	var delta_vector = get_delta_vector()
-	return sqrt(pow(delta_vector.x, 2) + pow(delta_vector.y, 2)) <= sight
+	return delta_vector.length() <= rang
 
 # get distance vector towards player
 func get_delta_vector():
@@ -99,6 +109,24 @@ func register_attack(attack_name, wait_time):
 # add attack to attack_map, needs name and time interval
 func add_attack(attack_name, wait_time):
 	attack_map[attack_name] = wait_time
-
+func shoot():
+	if(!in_rang(sight)):
+		return
+	var cannonBall = cannon_ball.instance()
+	collection.add_child(cannonBall)
+	cannonBall.global_position=self.global_position
+	cannonBall.startpos=self.global_position
+	cannonBall.movement= direction
+func _die():
+	#add animation player
+	queue_free()
 func _physics_process(delta):
 	move()
+	if(!hp>0):
+		_die()
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
