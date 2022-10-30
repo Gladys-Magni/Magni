@@ -22,13 +22,13 @@ var island2 = preload("res://level/Island2.tscn")
 var island3 = preload("res://level/Island3.tscn")
 var islands = [island2, island3]
 var enemyBoat = preload("res://enemy/EnemyBoat.tscn")
+var coin = preload("res://loot/Loot.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	initBackground()
 	placeEnemyZones()
 	placeIslands()
-	
 	
 func placeEnemyZones():
 	var zoneAmount = floor(tileAmount * tileAmount * zoneDensity)
