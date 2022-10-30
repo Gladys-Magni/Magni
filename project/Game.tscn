@@ -358,4 +358,6 @@ shape = SubResource( 23 )
 position = Vector2( -69, -109 )
 script = ExtResource( 9 )
 
+[node name="ProjectileCollection" type="Node2D" parent="."]
+
 [connection signal="timeout" from="Kapitaen/timer" to="Kapitaen" method="_on_timer_timeout"]
