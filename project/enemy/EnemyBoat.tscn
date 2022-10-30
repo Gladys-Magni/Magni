@@ -1,8 +1,10 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://enemy/EnemyBoat.gd" type="Script" id=1]
 [ext_resource path="res://enemy/enemy_img/spritesheet_enemyship.png" type="Texture" id=2]
 [ext_resource path="res://enemy/enemy_img/explosion-3.png" type="Texture" id=3]
+[ext_resource path="res://enemy/enemyHealthbar.gd" type="Script" id=4]
+[ext_resource path="res://assets/skull.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=3]
 resource_name = "IdleDown"
@@ -195,6 +197,12 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="StyleBoxFlat" id=33]
+bg_color = Color( 0.286275, 0.027451, 0.105882, 1 )
+
+[sub_resource type="StyleBoxFlat" id=34]
+bg_color = Color( 0, 0, 0, 1 )
+
 [sub_resource type="RectangleShape2D" id=31]
 extents = Vector2( 14.5, 11.5 )
 
@@ -230,25 +238,29 @@ visible = false
 frames = SubResource( 30 )
 frame = 4
 
-[node name="CannonProgress" type="Control" parent="."]
+[node name="EnemyProgress" type="Control" parent="."]
 margin_left = 9.0
 margin_top = 8.0
 margin_right = 49.0
 margin_bottom = 48.0
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 
-[node name="enemybar" type="ProgressBar" parent="CannonProgress"]
+[node name="enemybar" type="ProgressBar" parent="EnemyProgress"]
 margin_left = -9.0
 margin_top = -8.0
 margin_right = 47.0
 margin_bottom = 6.0
+custom_styles/fg = SubResource( 33 )
+custom_styles/bg = SubResource( 34 )
+percent_visible = false
 
-[node name="Sprite" type="Sprite" parent="CannonProgress"]
-position = Vector2( -9, -1 )
-scale = Vector2( 0.015, 0.0142188 )
+[node name="Sprite" type="Sprite" parent="EnemyProgress"]
+position = Vector2( -9.49187, -0.930725 )
+scale = Vector2( 0.0627906, 0.0361918 )
+texture = ExtResource( 5 )
 
 [node name="collider" type="CollisionShape2D" parent="."]
-position = Vector2( -1.5, 12.5 )
+position = Vector2( -2, 12 )
 shape = SubResource( 31 )
 
 [connection signal="animation_finished" from="DeathAnimation" to="." method="_on_DeathAnimation_animation_finished"]

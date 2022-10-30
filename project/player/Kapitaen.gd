@@ -4,9 +4,11 @@ const ACCELERATION = 1
 const MAX_SPEED = 200
 const FRICTION = 1
 var inShop = false
-var stats = {"Health": 1, "CannonBalls": 1, "Coins": 0, "DamageMultiplicator": 1, "BoatSpeed": 1, "Range": 1, "ReloadTime": 5}
+var stats = {"Health": 1, "CannonBalls": 1, "Coins": 100, "DamageMultiplicator": 1, "BoatSpeed": 1, "Range": 1, "ReloadTime": 5}
 var level = 1
 var health = 1
+
+const HeartSize = 15
 
 var velocity = Vector2.ZERO
 
@@ -100,7 +102,14 @@ func getBoatSpeed():
 func getLevel():
 	return self.level
 	
+func resetHearts():
+	$Camera2D/HealthUI/HeartUIEmpty.rect_size.x = self.stats["Health"] * HeartSize
+	$Camera2D/HealthUI/HeartUIFull.rect_size.x = self.stats["Health"] * HeartSize
 	
+func takeDamage(damage):
+	self.health -= damage
+	var deduction = damage * HeartSize
+	$Camera2D/HealthUI/HeartUIFull.rect_size.x -= deduction
 	
 func increaseLevel():
 	self.level += 1
@@ -108,6 +117,7 @@ func increaseLevel():
 func increaseHealth():
 	self.stats["Health"] += 1
 	self.health = self.stats["Health"]
+	resetHearts()
 	
 func increaseDamage():
 	self.stats["DamageMultiplicator"] += 1

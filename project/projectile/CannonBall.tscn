@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://CannonBall.gd" type="Script" id=1]
 [ext_resource path="res://projectile/Explosion.png" type="Texture" id=2]
 [ext_resource path="res://projectile/Canonball.png" type="Texture" id=3]
 [ext_resource path="res://sounds/explosion.mp3" type="AudioStream" id=4]
+[ext_resource path="res://assets/kisspng-animation-drawing-model-sheet-water-effect-5ac0b371870ee8.1969472515225782895532.png" type="Texture" id=5]
+[ext_resource path="res://sounds/[YT2mp3.info] - Water Splash - Sound Effects (320kbps).mp3" type="AudioStream" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -43,6 +45,58 @@ animations = [ {
 "speed": 2.0
 } ]
 
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 200, 160 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 139, 200, 117 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 256, 200, 117 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 373, 200, 117 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 506, 200, 113 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 5 )
+region = Rect2( 23, 650, 192, 153 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 5 )
+region = Rect2( 300, 59, 300, 150 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 5 )
+region = Rect2( 300, 209, 300, 150 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 5 )
+region = Rect2( 300, 408, 300, 184 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 5 )
+region = Rect2( 300, 592, 300, 184 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 5 )
+region = Rect2( 300, 718, 300, 239 )
+
+[sub_resource type="SpriteFrames" id=21]
+animations = [ {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"loop": false,
+"name": "splasheffect",
+"speed": 5.0
+} ]
+
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 330.25, 299.5 )
 
@@ -56,6 +110,12 @@ scale = Vector2( 10.9659, 14.16 )
 frames = SubResource( 7 )
 animation = "explosion"
 
+[node name="splash" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -800 )
+scale = Vector2( 20.2674, 21.8141 )
+frames = SubResource( 21 )
+animation = "splasheffect"
+
 [node name="cannonBallTexture" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 
@@ -68,8 +128,12 @@ shape = SubResource( 8 )
 [node name="EXPLOSION" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
 
+[node name="SPLASH" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+
 [connection signal="area_entered" from="." to="." method="_on_CannonBall_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_CannonBall_body_entered"]
 [connection signal="animation_finished" from="explosion" to="." method="_on_explosion_animation_finished"]
+[connection signal="animation_finished" from="splash" to="." method="_on_splash_animation_finished"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

@@ -44,7 +44,7 @@ func _on_EnemyProjectile_body_entered(body):
 	if(!body.is_in_group("Enemies")):
 		_explode()
 	if(body.is_in_group("Boat")):
-		body.health-=0.2
+		body.takeDamage(0.2)
 	pass # Replace with function body.
 	
 	#pass # Replace with function body.

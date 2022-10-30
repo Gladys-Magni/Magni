@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://level/Level.gd" type="Script" id=1]
 [ext_resource path="res://assets/Wellen.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://projectile/Canonball.png" type="Texture" id=13]
 [ext_resource path="res://GUI/CannonUI.tscn" type="PackedScene" id=14]
 [ext_resource path="res://sounds/shot (mp3cut.net).mp3" type="AudioStream" id=15]
+[ext_resource path="res://Game.gd" type="Script" id=16]
 
 [sub_resource type="AtlasTexture" id=29]
 flags = 4
@@ -239,14 +240,13 @@ blend_point_3/pos = Vector2( 0, -1 )
 
 [sub_resource type="AnimationNodeStateMachine" id=21]
 states/Idle/node = SubResource( 28 )
-states/Idle/position = Vector2( 361, 138 )
+states/Idle/position = Vector2( 318, 171 )
 start_node = "Idle"
-graph_offset = Vector2( -145.885, 0 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=22]
 
 [node name="Game" type="Node2D"]
-script = ExtResource( 15 )
+script = ExtResource( 16 )
 
 [node name="Level" type="Node2D" parent="."]
 script = ExtResource( 1 )

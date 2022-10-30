@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/[YT2mp3.info] - Water Splash - Sound Effects (320kbps).mp3-0c8174255f1de8ddd24a9cf1653b8b76.mp3str"
+
+[deps]
+
+source_file="res://sounds/[YT2mp3.info] - Water Splash - Sound Effects (320kbps).mp3"
+dest_files=[ "res://.import/[YT2mp3.info] - Water Splash - Sound Effects (320kbps).mp3-0c8174255f1de8ddd24a9cf1653b8b76.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
