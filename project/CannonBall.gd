@@ -18,6 +18,7 @@ func _explode():
 	explosion.show()
 	exploding=true
 	explosion.play("explosion")
+	$EXPLOSION.play()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	explosion.hide()

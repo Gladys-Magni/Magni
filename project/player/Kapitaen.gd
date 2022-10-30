@@ -92,5 +92,3 @@ func _on_timer_timeout():
 	loaded=true
 	pass # Replace with function body.
 
-
-

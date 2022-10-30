@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://CannonBall.gd" type="Script" id=1]
 [ext_resource path="res://projectile/Explosion.png" type="Texture" id=2]
 [ext_resource path="res://projectile/Canonball.png" type="Texture" id=3]
+[ext_resource path="res://sounds/explosion.mp3" type="AudioStream" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -63,6 +64,9 @@ position = Vector2( 3, 4 )
 shape = SubResource( 8 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="EXPLOSION" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="area_entered" from="." to="." method="_on_CannonBall_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_CannonBall_body_entered"]
