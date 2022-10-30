@@ -2,6 +2,7 @@ extends Node2D
 
 onready var explosion= $explosion
 onready var spr = $cannonBallTexture
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
