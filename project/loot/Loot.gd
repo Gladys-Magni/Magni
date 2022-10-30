@@ -19,5 +19,4 @@ func _physics_process(delta):
 	pass
 
 func _on_Loot_body_entered(body):
-	print(loot_name + ": " + str(loot_value))
 	queue_free()
