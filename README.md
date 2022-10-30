@@ -42,3 +42,6 @@ Die verfügbaren Wörter sind dabei hier einzusehen:
 |  E | Interaktion mit dem Shop  |
 | ESC  | Verlassen des Shops  |
 | LMB  |  Feuern der Kanone |
+
+![](Welt_screenshot.png)
+![](Shop_Screenshot.png)
