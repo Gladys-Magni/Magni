@@ -307,7 +307,6 @@ texture = ExtResource( 11 )
 
 [node name="Kapitaen" type="KinematicBody2D" parent="." groups=["Boat"]]
 position = Vector2( 3.05176e-05, 1.52588e-05 )
-scale = Vector2( 1, 1 )
 script = ExtResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="Kapitaen"]
