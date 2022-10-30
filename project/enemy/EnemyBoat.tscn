@@ -1,10 +1,256 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://enemy/EnemyBoat.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://enemy/enemy_img/spritesheet_enemyship.png" type="Texture" id=2]
+[ext_resource path="res://enemy/enemy_img/explosion-3.png" type="Texture" id=3]
 
-[node name="EnemyBoat" type="Node2D"]
+[sub_resource type="Animation" id=3]
+resource_name = "IdleDown"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnemyTexture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "IdleLeft"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnemyTexture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "IdleRight"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnemyTexture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "IdleUp"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnemyTexture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=32]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnemyTexture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "RunDown"
+length = 0.5
+loop = true
+
+[sub_resource type="Animation" id=13]
+resource_name = "RunLeft"
+length = 0.5
+loop = true
+
+[sub_resource type="Animation" id=14]
+resource_name = "RunRight"
+length = 0.5
+loop = true
+
+[sub_resource type="Animation" id=10]
+resource_name = "RunUp"
+length = 0.5
+loop = true
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "IdleLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "IdleUp"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "IdleRight"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "IdleDown"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=15]
+blend_point_0/node = SubResource( 16 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 17 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 18 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 19 )
+blend_point_3/pos = Vector2( 0, -1 )
+
+[sub_resource type="AnimationNodeStateMachine" id=5]
+states/Idle/node = SubResource( 15 )
+states/Idle/position = Vector2( -368.517, 133 )
+start_node = "Idle"
+graph_offset = Vector2( -979.517, 0 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=6]
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 128, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 256, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 384, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 512, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 640, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 768, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 896, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1024, 0, 128, 80 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1152, 0, 128, 80 )
+
+[sub_resource type="SpriteFrames" id=30]
+animations = [ {
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=31]
+extents = Vector2( 14.5, 11.5 )
+
+[node name="EnemyBoat" type="Area2D" groups=["Enemies"]]
 script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="EnemyTexture" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/IdleDown = SubResource( 3 )
+anims/IdleLeft = SubResource( 4 )
+anims/IdleRight = SubResource( 1 )
+anims/IdleUp = SubResource( 2 )
+anims/RESET = SubResource( 32 )
+anims/RunDown = SubResource( 12 )
+anims/RunLeft = SubResource( 13 )
+anims/RunRight = SubResource( 14 )
+anims/RunUp = SubResource( 10 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 5 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 6 )
+parameters/Idle/blend_position = Vector2( -0.99683, -0.0103092 )
+
+[node name="DeathAnimation" type="AnimatedSprite" parent="."]
+visible = false
+frames = SubResource( 30 )
+frame = 4
+
+[node name="CannonProgress" type="Control" parent="."]
+margin_left = 9.0
+margin_top = 8.0
+margin_right = 49.0
+margin_bottom = 48.0
+script = ExtResource( 3 )
+
+[node name="enemybar" type="ProgressBar" parent="CannonProgress"]
+margin_left = -9.0
+margin_top = -8.0
+margin_right = 47.0
+margin_bottom = 6.0
+
+[node name="Sprite" type="Sprite" parent="CannonProgress"]
+position = Vector2( -9, -1 )
+scale = Vector2( 0.015, 0.0142188 )
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2( -1.5, 12.5 )
+shape = SubResource( 31 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.431
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

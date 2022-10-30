@@ -1,3 +1,0 @@
-# Magni
-hjgjhg
-gvgyv
