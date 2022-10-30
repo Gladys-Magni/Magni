@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://level/Level.gd" type="Script" id=1]
 [ext_resource path="res://assets/Wellen.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://GUI/HealthUI.tscn" type="PackedScene" id=12]
 [ext_resource path="res://projectile/Canonball.png" type="Texture" id=13]
 [ext_resource path="res://GUI/CannonUI.tscn" type="PackedScene" id=14]
+[ext_resource path="res://sounds/shot (mp3cut.net).mp3" type="AudioStream" id=15]
 
 [sub_resource type="AtlasTexture" id=29]
 flags = 4
@@ -358,4 +359,9 @@ shape = SubResource( 23 )
 position = Vector2( -69, -109 )
 script = ExtResource( 9 )
 
+[node name="CanonShootAudioPlayer" type="AudioStreamPlayer2D" parent="Kapitaen"]
+position = Vector2( 391, 69 )
+stream = ExtResource( 15 )
+
 [connection signal="timeout" from="Kapitaen/timer" to="Kapitaen" method="_on_timer_timeout"]
+[connection signal="finished" from="Kapitaen/CanonShootAudioPlayer" to="Kapitaen" method="_on_AudioStreamPlayer2D_finished"]

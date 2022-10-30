@@ -52,3 +52,5 @@ func _physics_process(delta):
 	spr.global_position=get_global_mouse_position()
 	lastPos=cur
 	pass
+	
+
