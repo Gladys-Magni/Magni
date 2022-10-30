@@ -1,5 +1,5 @@
 # Magni
-Dieses Spiel entstand im Laufe der GameJam 3m5 2022. Die Bearbeitung hat sich üer 16h verteilt auf 2 Tage gestreckt.
+Dieses Spiel entstand im Laufe der GameJam 3m5 2022. Die Bearbeitung hat sich über 16h verteilt auf 2 Tage gestreckt.
 
 ## Team
 Das beteiligte Team bestand aus folgenden vier Mitgliedern:
@@ -42,6 +42,6 @@ Die verfügbaren Wörter sind dabei hier einzusehen:
 |  E | Interaktion mit dem Shop  |
 | ESC  | Verlassen des Shops  |
 | LMB  |  Feuern der Kanone |
-
+<img src="Welt_screenshot.png" width=100>
 ![](Welt_screenshot.png)
 ![](Shop_Screenshot.png)
