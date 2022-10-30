@@ -3,6 +3,7 @@ extends Node2D
 onready var explosion= $explosion
 onready var spr = $cannonBallTexture
 
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -11,7 +12,7 @@ var exploding=false
 var movement=Vector2()
 var startpos=Vector2()
 var SPEED = 500
-const distructiondistance=600
+var distructiondistance = 300
 var distanceToShip=0
 func _length(var vec):
 	return sqrt(vec.x*vec.x+vec.y*vec.y)

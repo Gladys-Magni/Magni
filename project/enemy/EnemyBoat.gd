@@ -12,7 +12,7 @@ onready var coin = preload("res://loot/Coin.tscn")
 # speed of boat is 7
 # add shoot as attack every 5 		seconds
 func _init():
-	._init(2, 500 ,100, 50)
+	._init(2, 500 ,100, 200)
 	.add_attack("shoot", 1.0)
 # shoot if the player is in range
 func move_towards_player():

@@ -1,17 +1,20 @@
 extends Node2D
 onready var cap=get_parent()
-var count=5
+var count=1
 var cannon_ball= preload("res://projectile/CannonBall.tscn")
 onready var collection= get_node("/root/Game/ProjectileCollection")
+onready var kapi =get_node("/root/Game/Kapitaen")
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
 func _shoot(var shipPos, var toMouse, var Currentdirection):
+	count=kapi.getCannonBalls()
 	if(Currentdirection.y==0):#move right
 		for i in count:
 			var cannonBall = cannon_ball.instance()
 			collection.add_child(cannonBall)
+			cannonBall.distructiondistance += kapi.getRange()*50
+			cannonBall.dmg += kapi.getDamageMultiplicator()*20
 			cannonBall.global_position=shipPos+Vector2(10*(i-(count/2)),0)
 			cannonBall.startpos=shipPos+Vector2(10*(i-(count/2)),0)
 			cannonBall.movement= toMouse.normalized()
@@ -21,6 +24,8 @@ func _shoot(var shipPos, var toMouse, var Currentdirection):
 		for i in count:
 			var cannonBall = cannon_ball.instance()
 			collection.add_child(cannonBall)
+			cannonBall.distructiondistance += kapi.getRange()*50
+			cannonBall.dmg += kapi.getDamageMultiplicator()*20
 			cannonBall.global_position=shipPos+Vector2(0,10*(i-(count/2)))
 			cannonBall.startpos=shipPos+Vector2(0,10*(i-(count/2)))
 			cannonBall.movement= toMouse.normalized()	

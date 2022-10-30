@@ -7,10 +7,8 @@ margin_right = 616.0
 margin_bottom = 121.0
 
 [node name="Cannon" type="TextureRect" parent="."]
-margin_left = 4.0
-margin_top = 7.00006
-margin_right = 12124.0
-margin_bottom = 2487.0
+margin_right = 12400.0
+margin_bottom = 2480.0
 rect_scale = Vector2( 0.035, 0.035 )
 texture = ExtResource( 1 )
 stretch_mode = 2

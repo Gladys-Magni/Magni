@@ -14,8 +14,8 @@ var sight
 var closest
 var chillzone=100
 # health points
-var hp = 500
-var maxhp = 500
+var hp = 200
+var maxhp = 200
 # player (only one for now)
 var player
 var cametoclose
@@ -34,7 +34,7 @@ var random_i
 # literally dying right now
 var dying
 
-func _init(speed = 5, sight = 300, closest=50, hp = 100):
+func _init(speed = 5, sight = 300, closest=50, hp = 200):
 	self.closest=closest
 	self.speed = speed
 	self.sight = sight
