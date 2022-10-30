@@ -19,13 +19,16 @@ var player
 # maps the function name of the attack to the wait time (attack speed)
 var attack_map
 
+# current direction as vector
+var velocity_vector
+
 # move in random direction when inactive
 var random_vector
 
 # move random for i iterations
 var random_i
 
-func _init(speed = 5, sight = 300, hp = 100):
+func _init(speed = 2, sight = 300, hp = 100):
 	self.speed = speed
 	self.sight = sight
 	self.hp = hp
@@ -48,7 +51,7 @@ func move():
 
 # get player position and move towards him
 func move_towards_player():
-	var velocity_vector = get_delta_vector()
+	velocity_vector = get_delta_vector()
 	velocity_vector = velocity_vector.normalized() * speed;
 	set_position(get_position() + velocity_vector)
 
@@ -99,8 +102,3 @@ func add_attack(attack_name, wait_time):
 
 func _physics_process(delta):
 	move()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
