@@ -111,9 +111,3 @@ func displayShop(playerPosition):
 	
 func removeShop():
 	$Shop.visible = false
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-

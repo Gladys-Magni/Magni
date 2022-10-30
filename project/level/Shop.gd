@@ -40,7 +40,7 @@ func _on_Health_Button_pressed():
 	player.pay(cost)	
 	player.increaseLevel()
 	player.increaseHealth()
-	if player.getHealth() >= 5:
+	if player.getMaxHealth() >= 5:
 		$"Health Button".visible = false
 	
 func _on_Speed_Button_pressed():
